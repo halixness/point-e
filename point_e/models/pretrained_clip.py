@@ -195,6 +195,7 @@ class ImageCLIP(nn.Module):
         x = vt.conv1(x)  # shape = [*, width, grid, grid]
         x = x.reshape(x.shape[0], x.shape[1], -1)  # shape = [*, width, grid ** 2]
         x = x.permute(0, 2, 1)  # shape = [*, grid ** 2, width]
+
         x = torch.cat(
             [
                 vt.class_embedding.to(x.dtype)
@@ -203,16 +204,33 @@ class ImageCLIP(nn.Module):
             ],
             dim=1,
         )  # shape = [*, grid ** 2 + 1, width]
+
         x = x + vt.positional_embedding.to(x.dtype)
         x = vt.ln_pre(x)
 
         x = x.permute(1, 0, 2)  # NLD -> LND
         x = vt.transformer(x)
         x = x.permute(1, 2, 0)  # LND -> NDL
+        
+        embedded_imgs = x[..., 1:].contiguous().float() + extra_value
+        
+        # Multi-view: stacking k images into a unique grid of patches
+        if len(xs) > 1:
+            # (D, tokens)
+            embeddings = None
+            for img in embedded_imgs:
+                if embeddings is None: embeddings = img
+                else: embeddings = torch.cat((embeddings, img), dim=1)
 
-        return x[..., 1:].contiguous().float() + extra_value
+            embeddings = embeddings.unsqueeze(0)
+            return embeddings
+        
+        # single-view
+        else:
+            return embedded_imgs
 
     def images_to_tensor(self, xs: Iterable[Optional[ImageType]]) -> torch.Tensor:
+        # it stacks multiple images! so it supports multiple views already (?)
         return torch.stack([self.preprocess(_image_to_pil(x)) for x in xs], dim=0).to(self.device)
 
 

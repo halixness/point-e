@@ -70,6 +70,7 @@ MODEL_CONFIGS = {
         "layers": 24,
         "n_ctx": 1024,
         "name": "CLIPImageGridPointDiffusionTransformer",
+        "n_views": 2, 
         "output_channels": 12,
         "time_token_cond": True,
         "width": 1024,

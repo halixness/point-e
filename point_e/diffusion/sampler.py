@@ -97,6 +97,7 @@ class PointCloudSampler:
         self, batch_size: int, model_kwargs: Dict[str, Any]
     ) -> Iterator[torch.Tensor]:
         samples = None
+        # 2 iterations: base, then upsampler
         for (
             model,
             diffusion,
@@ -121,13 +122,18 @@ class PointCloudSampler:
             self.model_kwargs_key_filter,
         ):
             stage_model_kwargs = model_kwargs.copy()
+            
             if stage_key_filter != "*":
                 use_keys = set(stage_key_filter.split(","))
                 stage_model_kwargs = {k: v for k, v in stage_model_kwargs.items() if k in use_keys}
+
+            # Detects samples are already present => upsampling phase
             if samples is not None:
                 stage_model_kwargs["low_res"] = samples
+            
             if hasattr(model, "cached_model_kwargs"):
                 stage_model_kwargs = model.cached_model_kwargs(batch_size, stage_model_kwargs)
+            
             sample_shape = (batch_size, 3 + len(self.aux_channels), stage_num_points)
 
             if stage_guidance_scale != 1 and stage_guidance_scale != 0:
@@ -162,6 +168,8 @@ class PointCloudSampler:
                 )
             for x in samples_it:
                 samples = x["pred_xstart"][:batch_size]
+
+                # upsampling mode
                 if "low_res" in stage_model_kwargs:
                     samples = torch.cat(
                         [stage_model_kwargs["low_res"][: len(samples)], samples], dim=-1
