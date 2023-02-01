@@ -340,6 +340,8 @@ class CLIPImageGridPointDiffusionTransformer(PointDiffusionTransformer):
         transformer_num_tokens = n_ctx + clip.grid_size**2 * n_views
         super().__init__(device=device, dtype=dtype, n_ctx=transformer_num_tokens, **kwargs)
 
+        print("[-] Low Res Diff Transformer set with {}+{}*{} input tokens.".format(n_ctx, clip.grid_size**2, n_views))
+
         self.n_ctx = n_ctx
         self.clip = clip
 
@@ -479,6 +481,8 @@ class CLIPImageGridUpsamplePointDiffusionTransformer(UpsamplePointDiffusionTrans
         else: n_views = 1 
         transformer_num_tokens = n_ctx + clip.grid_size**2 * n_views
         super().__init__(device=device, dtype=dtype, n_ctx=transformer_num_tokens, **kwargs)
+
+        print("[-] High Res Diff Transformer set with {}+{}*{} input tokens.".format(n_ctx, clip.grid_size**2, n_views))
         
         self.n_ctx = n_ctx # 3072 points
 

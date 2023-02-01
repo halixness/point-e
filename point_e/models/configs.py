@@ -63,6 +63,7 @@ MODEL_CONFIGS = {
         "width": 512,
     },
     "base300M": {
+        "n_views": 4, 
         "cond_drop_prob": 0.1,
         "heads": 16,
         "init_scale": 0.25,
@@ -70,7 +71,6 @@ MODEL_CONFIGS = {
         "layers": 24,
         "n_ctx": 1024,
         "name": "CLIPImageGridPointDiffusionTransformer",
-        "n_views": 2, 
         "output_channels": 12,
         "time_token_cond": True,
         "width": 1024,
@@ -88,6 +88,7 @@ MODEL_CONFIGS = {
         "width": 2048,
     },
     "upsample": {
+        "n_views": 4, 
         "channel_biases": [0.0, 0.0, 0.0, -1.0, -1.0, -1.0],
         "channel_scales": [2.0, 2.0, 2.0, 0.007843137255, 0.007843137255, 0.007843137255],
         "cond_ctx": 1024,
