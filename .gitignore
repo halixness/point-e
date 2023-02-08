@@ -5,4 +5,6 @@ point_e_model_cache/
 .DS_Store
 3d-diffusion/data
 3d-diffusion/trained_model.pt
-
+*.npz
+*.pt
+*.png
