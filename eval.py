@@ -106,6 +106,22 @@ def plot_distributions(cloud1, cloud2, labels=["cloud1", "cloud2"]):
     s.plot.kde(bw_method=0.4, figsize=(24,8), title='poincloud pdf of different objects')
     plt.savefig(f"{labels[0]}_{labels[1]}.png")
 
+def PIS(clf, cloud):
+    """
+        Compute P-IS score for a cloud
+        in:     PointNetClassifier, Tensor(c, K)
+        out:    Float
+        https://github.com/halixness/point-e/blob/69e677d8ea47593c33fe2f52fd40e131054c9ce3/point_e/evals/fid_is.py#L73
+    """
+    cloud = cloud.permute(1,0).unsqueeze(0).cpu().numpy()
+    _, preds = clf.features_and_preds(cloud)
+
+    return np.exp(
+      np.sum(
+        preds[0] * ( np.log(preds[0]) - np.log(np.mean(preds[0])) )
+      )
+    )
+
 # ----------------------- Params setting
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -176,18 +192,14 @@ plot_distributions(
     ["single view", "multi view"]
 )
 
+# Computing P-IS
 print("\n====== P-IS scores ======")
 
 clf = PointNetClassifier(devices=get_torch_devices(), cache_dir=None)
 
-_, preds = clf.features_and_preds(ground_point_cloud.unsqueeze(0)) # N, K, 3
-print(f"[+] Ground truth P-IS: \t\t{compute_inception_score(preds)}")
-
-_, preds = clf.features_and_preds(pc_single) # N, K, 3
-print(f"[+] Single view P-IS: \t\t{compute_inception_score(preds)}")
-
-_, preds = clf.features_and_preds(pc_multi) # N, K, 3
-print(f"[+] Multi view P-IS: \t\t{compute_inception_score(preds)}")
+print(f"[+] Ground truth P-IS: \t\t{PIS(clf, ground_point_cloud)}")
+print(f"[+] Single view P-IS: \t\t{PIS(clf, pc_single[0, :3])}")
+print(f"[+] Multi view P-IS: \t\t{PIS(clf, pc_multi[0, :3])}")
 
 
 
