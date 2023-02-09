@@ -7,4 +7,3 @@ point_e_model_cache/
 3d-diffusion/trained_model.pt
 *.npz
 *.pt
-*.png
