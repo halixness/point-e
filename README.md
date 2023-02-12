@@ -39,7 +39,7 @@ See: [`mv_point_e/models/transformer.py`](/mv_point_e/models/transformer.py)
 
 ### Multi-view with stochastic conditioning
 With inspiration from <a href="https://arxiv.org/abs/2210.04628">Watson et al. 2022</a>, a random conditioning image (from a given multi-view set) is fed to the denoising transformer at each diffusion denoising step.<br>
-See: [`mv_point_e/models/transformer.py`](/mv_point_e/models/transformer.py)
+See: [`sc_point_e/models/transformer.py`](/sc_point_e/models/transformer.py)
 <br>
 <br>
 <img src="img/3d_diffusion.png" width="550px" alt="Pipeline for point-e on top of stable diffusion 2" />
