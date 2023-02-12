@@ -17,6 +17,11 @@ It is based on the [official implementation repository](https://github.com/opena
 <br>
 <br>
 
+- Introduced 3D-Diffusion [Watson et al. 2022](https://arxiv.org/abs/2210.04628) in the pipeline to expand views generated with Stable Diffusion and obtain better 3d consistent objects.
+<img src="img/sd2_3ddiff_pointe.png" width="550px" alt="Pipeline for point-e on top of stable diffusion 2" />
+<br>
+<br>
+
 ## Setup
 There are two variants for multi-view:
 - Patch concatenation: `mv_point_e`
