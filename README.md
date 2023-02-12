@@ -1,12 +1,10 @@
 <table>
     <tr>
-        <td><img width="200px" src="img/render1.png"/></td>
-        <td><img width="200px" src="img/render2.png"/></td>
-        <td><img width="200px" src="img/render3.png"/></td>
+        <td><img width="300px" src="img/render1.png"/></td>
+        <td><img width="300px" src="img/render2.png"/></td>
+        <td><img width="300px" src="img/render3.png"/></td>
     </tr>
 </table>
-
-<br>
 
 # Stable, multi-view Point·E
 Point-E is a [diffusion model](https://halixness.github.io/2023/intro-to-diffusion/): a generative model that approximates a data distribution through noising (forward process) and denoising (backward process). The backward process is also named "sampling", as you start from a noisy point in the distribution and convert it back to signal with some conditional information. In Point-E, we start from a random point cloud of 1024 points and denoise it with images (an object photo) as conditioning signal.
