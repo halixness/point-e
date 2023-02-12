@@ -1,5 +1,12 @@
+<table>
+    <tr>
+        <td><img width="200px" src="img/render1.png"/></td>
+        <td><img width="200px" src="img/render2.png"/></td>
+        <td><img width="200px" src="img/render3.png"/></td>
+    </tr>
+</table>
 
-<img src="img/stable_pointe.png" width="650px" alt="Pipeline for point-e on top of stable diffusion 2" />
+<br>
 
 # Stable, multi-view Point·E
 This repository collects experiments with Point-E to improve the quality of generated point clouds from text.
@@ -11,7 +18,7 @@ This repository collects experiments with Point-E to improve the quality of gene
 - [x] ([Notebook 4](notebooks/4_local_photo_point_e.ipynb)) Pre-process photos 'in the wild' and generate a point-cloud
 - [x] ([Notebook 5](notebooks/5_eval_single_obj.ipynb), [Notebook 6](notebooks/6_eval_shapenet.ipynb)) Evaluate on ShapeNetv0-obj, metrics: P-IS, P-Wasserstein-Euclidean Distance
 - [x] ([Notebook 7](notebooks/7_eval_views_pika.ipynb)) Testing multi-view point-e against single view on occluded object parts
-- [ ] Feed multiple views to Point-E (stochastic conditioning as in [Watson et al. 2022](https://arxiv.org/abs/2210.04628))
+- [x] Feed multiple views to Point-E (stochastic conditioning as in [Watson et al. 2022](https://arxiv.org/abs/2210.04628))
 
 # Setup
 There are two variants for multi-view:
