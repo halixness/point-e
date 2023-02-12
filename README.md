@@ -56,10 +56,6 @@ We use 3D-Diffusion from [Watson et al. 2022](https://arxiv.org/abs/2210.04628) 
 <br>
 <img src="img/sd2_3ddiff_pointe.png" width="550px" alt="Pipeline for point-e on top of stable diffusion 2" />
 <br>
-<em>
-    Original image: <a href="https://arxiv.org/abs/2210.04628">Watson et al. 2022</a>
-</em>
-<br>
 <br>
 
 ## Setup
