@@ -32,7 +32,7 @@ See: [`mv_point_e/models/transformer.py`](/mv_point_e/models/transformer.py)
 <img src="img/modified_pointe.png" width="400px" alt="Pipeline for point-e on top of stable diffusion 2" />
 <br>
 <em>
-    Original image: <a href="https://arxiv.org/abs/2210.04628">Watson et al. 2022</a>
+    Original image: <a href="https://arxiv.org/abs/2212.08751">Nichol et al. 2022</a>
 </em>
 <br>
 <br>
@@ -99,6 +99,7 @@ python eval.py --input_views n_w_h_rgb_tensor.pt \
                --ground_point_cloud n_k_rgb_clouds_tensor.pt \
                --num_points 1024 --num-views 4
 ```
+Source to the evaluation datasets:
 
 | Name          | Samples      | Source        |
 |---            |---        |---            |
@@ -107,8 +108,6 @@ python eval.py --input_views n_w_h_rgb_tensor.pt \
 | Mixed, textureless    |   95     | [Google Drive](https://drive.google.com/file/d/1HWnUt1O57uDeG3GeOVqIpRJuMb4nEMUb/view?usp=share_link)             | 
 | OpenAI seed imgs/clouds    |   /     | [Google Drive](https://openaipublic.azureedge.net/main/point-e/banner_pcs.zip)             |   
 | OpenAI, COCO CLIP R-Precision evals    |   /     | [Google Drive](https://openaipublic.azureedge.net/main/point-e/coco_images.zip)             |   
-
-<br>
 
 ## Credits
 - [a6o: 3d-diffusion implementation](https://github.com/a6o/3d-diffusion-pytorch)
