@@ -24,6 +24,8 @@ It is based on the [official implementation repository](https://github.com/opena
 
 ## Contributions
 
+We extend conditioning for point cloud diffusion with multiple views. This tackles the problem of generating objects with duplicated faces, blurring in occluded parts and 3d consistency.    
+
 ### Multi-view with patch concatenation
 Each conditioning image is encoded with the pre-trained [OpenAI CLIP](https://arxiv.org/abs/2103.00020), all the resulting embeddings are concatenated and fed as tokens into the denoising transformer. <br>
 See: [`mv_point_e/models/transformer.py`](/mv_point_e/models/transformer.py)
@@ -109,3 +111,13 @@ Source to the evaluation datasets:
 - [a6o: 3d-diffusion implementation](https://github.com/a6o/3d-diffusion-pytorch)
 - [OpenAI: official Point-E implementation](https://github.com/openai/point-e)
 - [RemBG: background removal, U^2 Net implementation](https://github.com/danielgatis/rembg)
+
+## Cite this work
+```bibtex
+@article{CalanzoneTedoldi2022,
+    title   = {Generating point clouds from multiple views with Point-E},
+    author  = {Diego Calanzone, Riccardo Tedoldi, Zeno Sambugaro},
+    year    = {2023},
+    url  = {http://github.com/halixness/point-e}
+}
+```
