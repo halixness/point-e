@@ -5,7 +5,7 @@ from typing import List, Optional, Tuple, Union
 import numpy as np
 import torch
 
-from point_e.models.download import load_checkpoint
+from sc_point_e.models.download import load_checkpoint
 
 from .npz_stream import NpzStreamer
 from .pointnet2_cls_ssg import get_model
