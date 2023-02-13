@@ -114,7 +114,7 @@ Source to the evaluation datasets:
 
 ## Cite this work
 ```bibtex
-@article{CalanzoneTedoldi2022,
+@misc{CalanzoneTedoldi2022,
     title   = {Generating point clouds from multiple views with Point-E},
     author  = {Diego Calanzone, Riccardo Tedoldi, Zeno Sambugaro},
     year    = {2023},
