@@ -7,12 +7,12 @@
 </table>
 
 # Stable, multi-view Point·E
+
+In this repo we introduce multi-view conditioning for point-cloud diffusion, we test it in two pipelines: multiple synthetic views from text; multiple views from photos in the wild. We develop an evaluation dataset based on ShapeNet and ModelNet and propose a new metric to assess visually and analitically the overlap between two point clouds. This repo is based on the [official implementation of Point-E](https://github.com/openai/point-e).
+
 Point-E is a [diffusion model](https://halixness.github.io/2023/intro-to-diffusion/): a generative model that approximates a data distribution through noising (forward process) and denoising (backward process). The backward process is also named "sampling", as you start from a noisy point in the distribution and convert it back to signal with some conditional information. In Point-E, we start from a random point cloud of 1024 points and denoise it with images (an object photo) as conditioning signal.
 
 Compared to other techniques in literature, such as [Neural Radiance Fields](https://arxiv.org/abs/2003.08934), you can sample a point cloud with Point-E with a single gpu in 1-2 minutes. Sample quality is the price to pay, making this technique  ideal for task where point clouds are best suited.
-
-This repository collects experiments with Point-E to improve the quality of generated point clouds from text and images.
-It is based on the [official implementation repository](https://github.com/openai/point-e) and it introduces modifications/ideas for improvement.
 
 ## Table of contents
 
@@ -23,6 +23,8 @@ It is based on the [official implementation repository](https://github.com/opena
 
 
 ## Contributions
+
+We extend conditioning for point cloud diffusion with multiple views. This tackles the problem of generating objects with duplicated faces, blurring in occluded parts and 3d consistency.    
 
 ### Multi-view with patch concatenation
 Each conditioning image is encoded with the pre-trained [OpenAI CLIP](https://arxiv.org/abs/2103.00020), all the resulting embeddings are concatenated and fed as tokens into the denoising transformer. <br>
@@ -55,10 +57,6 @@ We use 3D-Diffusion from [Watson et al. 2022](https://arxiv.org/abs/2210.04628) 
 <br>
 <br>
 <img src="img/sd2_3ddiff_pointe.png" width="550px" alt="Pipeline for point-e on top of stable diffusion 2" />
-<br>
-<em>
-    Original image: <a href="https://arxiv.org/abs/2210.04628">Watson et al. 2022</a>
-</em>
 <br>
 <br>
 
@@ -325,3 +323,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - [a6o: 3d-diffusion implementation](https://github.com/a6o/3d-diffusion-pytorch)
 - [OpenAI: official Point-E implementation](https://github.com/openai/point-e)
 - [RemBG: background removal, U^2 Net implementation](https://github.com/danielgatis/rembg)
+
+## Cite this work
+```bibtex
+@misc{CalanzoneTedoldi2022,
+    title   = {Generating point clouds from multiple views with Point-E},
+    author  = {Diego Calanzone, Riccardo Tedoldi, Zeno Sambugaro},
+    year    = {2023},
+    url  = {http://github.com/halixness/point-e}
+}
+```
