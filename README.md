@@ -20,6 +20,7 @@ Compared to other techniques in literature, such as [Neural Radiance Fields](htt
 2. [Setup](#setup)
 3. [Experiments](#experiments)
 4. [Evaluation](#evaluation)
+4. [Credits](#credits)
 
 
 ## Contributions
