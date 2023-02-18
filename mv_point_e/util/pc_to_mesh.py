@@ -5,7 +5,7 @@ import skimage
 import torch
 from tqdm.auto import tqdm
 
-from point_e.models.sdf import PointCloudSDFModel
+from mv_point_e.models.sdf import PointCloudSDFModel
 
 from .mesh import TriMesh
 from .point_cloud import PointCloud
