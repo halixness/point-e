@@ -24,7 +24,7 @@ def views_to_pointcloud(views, n_views=1):
     """ 
         Add zero color to a point cloud 
         in:     Tensor(n, w, h, 3), int(n)
-        out:    Tensor(1, K, (x, y, z, r, g, b))
+        out:    Tensor(1, K, (x, y, z, r, g, b)) 
     """
 
     base_name = 'base300M' # base40M, use base300M or base1B for better results
