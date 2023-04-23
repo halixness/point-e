@@ -331,6 +331,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     title   = {Generating point clouds from multiple views with Point-E},
     author  = {Diego Calanzone, Riccardo Tedoldi, Zeno Sambugaro},
     year    = {2023},
-    url  = {http://github.com/halixness/point-e}
+    url  = {http://github.com/halixness/stable-point-e}
 }
 ```
